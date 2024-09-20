@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final pb = PocketBase('http://10.0.2.2:8090');
-  String username = '';
+  String userName = '';
 
   @override
   void initState() {
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
 
         if (user != null) {
           setState(() {
-            username = user.data['username'] ?? 'Unknown User';
+            userName = user.data['name'] ?? 'Unknown User';
           });
         } else {
           print("User model is null, possibly due to an invalid token.");
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
               ),
               const SizedBox(height: 20),
               Text(
-                'Welcome, $username',
+                'Welcome, $userName',
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
