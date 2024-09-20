@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:niner_security/widgets/login_text_field.dart';
 import 'package:niner_security/widgets/signin_button.dart';
 import 'package:pocketbase/pocketbase.dart';
+import 'package:niner_security/screens/home.dart';
 
 final pb = PocketBase('http://127.0.0.1:8090');
 
@@ -10,6 +11,27 @@ class Login extends StatelessWidget {
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  void showAlertDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Alert"),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,32 +65,58 @@ class Login extends StatelessWidget {
                 obscureText: true,
               ),
               const SizedBox(height: 10),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Adjust alignment
                   children: [
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to the Sign Up screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     Text('Forgot Password?'),
                   ],
                 ),
               ),
+
+              //FIX SIGN IN FOR USER
               const SizedBox(height: 10),
               SigninButton(
                 onTap: () async {
-                  try {
-                    final authData = await pb
-                        .collection('users')
-                        .authWithPassword(
-                            'YOUR_USERNAME_OR_EMAIL', '1234567890');
-
-                    // Access the authentication data
-                    print(pb.authStore.isValid);
-                    print(pb.authStore.token);
-                    print(pb.authStore.model.id);
-                  } catch (e) {
-                    // Handle any errors
-                    print('Error: $e');
+                  final email = emailController.text.trim();
+                  final password = passwordController.text.trim();
+                  //Check for email and password emptiness
+                  if (email.isEmpty || password.isEmpty){
+                    showAlertDialog(context, "Email and Password cannot be empty");
+                    return;
                   }
+
+                  //Authenticate User
+                    try {
+                      final authData = await pb
+                          .collection('users')
+                          .authWithPassword(email, password);
+
+                      // Successfully authenticated
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Home(),
+                        ),
+                      );
+                    } catch (e) {
+                      // Handle authentication error (e.g., invalid credentials)
+                      showAlertDialog(context, "Unauthorized User. Please sign-up");
+                    }
                 },
               ),
             ],
