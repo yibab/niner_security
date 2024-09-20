@@ -95,6 +95,7 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               const SizedBox(height: 7.5),
+              const Image(image: AssetImage('assets/niner_logo.jpg')),
               Text(
                 'Niner Security',
                 style: GoogleFonts.bebasNeue(
