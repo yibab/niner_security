@@ -34,13 +34,15 @@ class _HomeState extends State<Home> {
       if (token != null) {
         pb.authStore.save(token, null);
 
+        await pb.collection('users').authRefresh();
+
         // Fetch the current user's data from the authStore
         final user = pb.authStore.model;
 
         // If user is logged in, display their username
         if (user != null) {
           setState(() {
-            username = user['username'];
+            username = user.data['username'];
           });
         }
       }
