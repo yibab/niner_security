@@ -59,6 +59,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -87,6 +88,7 @@ class _SignUpState extends State<SignUp> {
                         fontWeight: FontWeight.bold,
                         fontSize: 60)),
               ),
+
 
               //Sign Up Text
               const SizedBox(height: 5),
@@ -171,6 +173,7 @@ class _SignUpState extends State<SignUp> {
                   ],
                 ),
               ),
+
 
               //Sign In Button
               //DO SIGN IN LOGIC

@@ -24,34 +24,41 @@ class _HomeState extends State<Home> {
     _fetchCurrentUser();
   }
 
-  // Function to fetch the current user's username
   Future<void> _fetchCurrentUser() async {
     try {
       // Retrieve the stored auth token
       final token = await secureStorage.read(key: 'auth_token');
+      print("Token from secure storage: $token");
 
-      // If token exists, manually set it in the authStore
       if (token != null) {
         pb.authStore.save(token, null);
 
-        // Fetch the current user's data from the authStore
-        final user = pb.authStore.model;
+        await pb.collection('users').authRefresh();
 
-        // If user is logged in, display their username
+        // Now the user data should be available in the authStore model
+        final user = pb.authStore.model;
+        print("AuthStore model after refresh: $user");
+
         if (user != null) {
           setState(() {
-            username = user['username'];
+            username = user.data['username'] ?? 'Unknown User';
           });
+        } else {
+          print("User model is null, possibly due to an invalid token.");
         }
+      } else {
+        print("No token found in secure storage.");
       }
     } catch (e) {
       print('Error fetching user: $e');
     }
   }
 
+
   // Logout the user and clear the token
   void _logout() async {
     try {
+
       pb.authStore.clear();
       await secureStorage.delete(key: 'auth_token'); // Clear the stored token
 

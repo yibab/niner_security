@@ -65,6 +65,7 @@ class _LoginState extends State<Login> {
 
     // If there's a token, manually set it in the authStore
     if (token != null) {
+      print ("Token: $token");
       pb.authStore.save(token, null); // Save the token, no need to pass model yet
 
       // Check if the token is still valid
