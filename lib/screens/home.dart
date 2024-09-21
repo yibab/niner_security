@@ -3,6 +3,8 @@ import 'package:pocketbase/pocketbase.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'login.dart';
+import 'package:niner_security/widgets/copyright.dart';
+
 
 // Initialize Secure Storage
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -58,9 +60,9 @@ class _HomeState extends State<Home> {
   // Logout the user and clear the token
   void _logout() async {
     try {
-
+      //Clear Authtoken
       pb.authStore.clear();
-      await secureStorage.delete(key: 'auth_token'); // Clear the stored token
+      await secureStorage.delete(key: 'auth_token');
 
       // Navigate to the login screen after logout
       Navigator.pushReplacement(
@@ -125,20 +127,126 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              Text(
-                'Welcome, $userName',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF00703C),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.7),
+                      blurRadius: 10.0,
+                      offset: const Offset(0,0),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Welcome $userName!",
+                      style: GoogleFonts.bebasNeue(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        _logout();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        elevation: 5,
+                      ),
+                      child: const Text(
+                        'Logout',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _logout,
-                child: const Text('Logout'),
+              Container(
+                height: 175,
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Colors.red.shade300,
+                ),
+                child: Row(
+                  children: [
+                    Text('Emergency Services',
+                      style: GoogleFonts.bebasNeue(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                height: 175,
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFE1B12C),
+                ),
+                child: Row(
+                  children: [
+                    Text('Lost and Found',
+                      style: GoogleFonts.bebasNeue(
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              Container(
+                height: 175,
+                padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                decoration: const BoxDecoration(
+                  color: Color(0xFF64B5F6),
+                ),
+                child: Row(
+                  children: [
+                    Text('Additional Resources',
+                      style: GoogleFonts.bebasNeue(
+                          textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                          )
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Copyright(),
               ),
             ],
           ),
         ),
       ),
+
     );
   }
 }
