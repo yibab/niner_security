@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/widgets/logout_button.dart';
+import 'package:niner_security/widgets/niner_text.dart';
+
+import '../db/address.dart';
 
 // Initialize Secure Storage
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+   Home({super.key});
+
+
+  String username = pb.authStore.model.data['name'];
 
   @override
   Widget build(BuildContext context) {
@@ -18,29 +23,7 @@ class Home extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 7.5),
-              Text(
-                'Niner Security',
-                style: GoogleFonts.bebasNeue(
-                  textStyle: const TextStyle(
-                    color: Color(0xFFAD9651),
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 2,
-                        offset: Offset(2.5, 2.5),
-                      ),
-                      Shadow(
-                        color: Color(0xFF00703C),
-                        blurRadius: 1,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              const NinerText(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
@@ -53,6 +36,7 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
+              Text('hi $username'),
             ],
           ),
         ),
