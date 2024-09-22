@@ -3,7 +3,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/widgets/logout_button.dart';
 import 'package:niner_security/widgets/niner_text.dart';
 
-import '../db/address.dart';
 
 // Initialize Secure Storage
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -12,7 +11,7 @@ class Home extends StatelessWidget {
    Home({super.key});
 
 
-  String username = pb.authStore.model.data['name'];
+  // String name = pb.authStore.model.data['name'];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,6 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Text('hi $username'),
             ],
           ),
         ),
