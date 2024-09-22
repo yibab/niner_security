@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/login.dart';
-import 'package:niner_security/widgets/login_text_field.dart';
+import 'package:niner_security/widgets/custom_text_field.dart';
 import 'package:niner_security/widgets/signup_button.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:niner_security/widgets/show_alert.dart';
