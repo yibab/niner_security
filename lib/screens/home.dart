@@ -121,7 +121,8 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 20),
               Text(
                 'Welcome, $username',
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
