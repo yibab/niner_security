@@ -1,64 +1,34 @@
-import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/login.dart';
-import 'package:niner_security/widgets/login_text_field.dart';
-import 'package:niner_security/widgets/create_account.dart';
+import 'package:niner_security/widgets/custom_text_field.dart';
+import 'package:niner_security/widgets/signup_button.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pocketbase/pocketbase.dart';
+import 'package:niner_security/widgets/show_alert.dart';
+
+import '../db/address.dart';
+import '../widgets/copyright.dart';
+import '../widgets/niner_text.dart';
 
 
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignUp extends StatelessWidget {
+  SignUp({super.key});
 
-  @override
-  _SignUpState createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
   //Controllers for Database
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
+
   final passwordConfirmController = TextEditingController();
+
   final nameController = TextEditingController();
-  final usernameController = TextEditingController();
 
-  //DO NOT CHANGE ADDRESS
-  final pb = PocketBase('http://10.0.2.2:8090');
-
-
-  //Alert Dialog Stuff
-  void showAlertDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Alert"),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("OK"),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  //Generate Random Username
-  //May Change and Keep Displayed Name as The Name Field
-  String randomUserName(){
-    var random = Random();
-    int randomNumber = random.nextInt(100000);
-    return 'user$randomNumber';
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -66,27 +36,7 @@ class _SignUpState extends State<SignUp> {
             children: [
               //App Title
               const SizedBox(height: 7.5),
-              Text(
-                'Niner Security',
-                style: GoogleFonts.bebasNeue(
-                    textStyle: const TextStyle(
-                        color: Color(0xFFAD9651),
-                        shadows: [
-                          Shadow(
-                            color: Colors.black,
-                            blurRadius: 2,
-                            offset: Offset(2.5, 2.5)
-                          ),
-                          Shadow(
-                            color: Color(0xFF00703C),
-                            blurRadius: 1,
-                            offset: Offset(1, 1)
-                          )
-                        ],
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 60)),
-              ),
+              const NinerText(),
 
               //Sign Up Text
               const SizedBox(height: 5),
@@ -107,12 +57,7 @@ class _SignUpState extends State<SignUp> {
               ),
 
               //Username Field
-              const SizedBox(height: 10),
-              LoginTextField(
-                controller: usernameController,
-                hintText: 'Username (Optional)',
-                obscureText: false,
-              ),
+
 
               //Email Field
               const SizedBox(height: 10),
@@ -157,7 +102,7 @@ class _SignUpState extends State<SignUp> {
                         // Navigate to the Sign Up screen
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>  const Login()),
+                          MaterialPageRoute(builder: (context) =>   Login()),
                         );
                       },
                       child: const Text(
@@ -167,6 +112,14 @@ class _SignUpState extends State<SignUp> {
                             fontWeight: FontWeight.bold
                         ),
                       ),
+                    ),
+
+                    //Copyright at Bottom of Page
+                    const SizedBox(height: 10),
+                    const Spacer(),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: Copyright(),
                     ),
                   ],
                 ),
@@ -179,50 +132,71 @@ class _SignUpState extends State<SignUp> {
                 onTap: () async {
                   final email = emailController.text.trim();
                   final password = passwordController.text.trim();
-                  final passwordConfirm = passwordConfirmController.text.trim(); // Capture confirm password
+                  final passwordConfirm = passwordConfirmController.text.trim();
                   final name = nameController.text.trim();
-                  final username = usernameController.text.trim();
 
-
-                  //Checks for Email and Password being Empty, Password and Password Confirm not Matching, and If School Email is Entered
                   if (email.isEmpty || password.isEmpty || name.isEmpty) {
-                    showAlertDialog(context, "Email, Password, and Name cannot be empty");
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const ShowAlert(message: "Email, Password, and Name cannot be empty");
+                      },
+                    );
                   } else if (password != passwordConfirm) {
-                    showAlertDialog(context, "Passwords do not match!");
-                  } else if (!email.endsWith('@uncc.edu') && !email.endsWith('@charlotte.edu')){
-                    showAlertDialog(context, "Please enter your school email address!");
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const ShowAlert(message: "Passwords do not match!");
+                      },
+                    );
+                  } else if (!email.endsWith('@uncc.edu') && !email.endsWith('@charlotte.edu')) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const ShowAlert(message: "Please enter your school email address!");
+                      },
+                    );
                   } else {
-                    // Generate Username if User doesn't enter username
-                    String generatedUsername = username.isEmpty ? randomUserName() : username;
-
-                    // Check Password Length
                     if (password.length < 8 || password.length > 72) {
-                      showAlertDialog(context, "Password must be between 8 and 72 characters");
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const ShowAlert(message: "Password must be between 8 and 72 characters");
+                        },
+                      );
                       return;
                     }
 
-                    // Create User
                     final body = <String, dynamic>{
-                      "username": generatedUsername,
+                      "username": name,
                       "email": email,
                       "password": password,
-                      "passwordConfirm": passwordConfirm, // Pass confirm password
+                      "passwordConfirm": passwordConfirm,
                       "name": name,
                     };
 
-                    //Error Checks In Case Anything Messes Up
                     try {
-                      final record = await pb.collection('users').create(body: body);
+                      await pb.collection('users').create(body: body);
 
-                      showAlertDialog(context, "Sign Up successful!");
+                      showDialog( // Alert for successful signup
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const ShowAlert(message: "Sign Up successful!");
+                        },
+                      );
+
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const Login()),
+                        MaterialPageRoute(builder: (context) => Login()),
                       );
                     } catch (e) {
-                      showAlertDialog(context, "Sign Up failed");
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const ShowAlert(message: "Sign Up failed");
+                        },
+                      );
                     }
-
                   }
                 },
               ),

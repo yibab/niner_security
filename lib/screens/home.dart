@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import '../widgets/copyright.dart';
 import 'login.dart';
 
 // Initialize Secure Storage
@@ -58,7 +59,7 @@ class _HomeState extends State<Home> {
       // Navigate to the login screen after logout
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const Login()),
+        MaterialPageRoute(builder: (context) => Login()),
       );
     } catch (e) {
       print('Error logging out: $e');
@@ -127,6 +128,14 @@ class _HomeState extends State<Home> {
               ElevatedButton(
                 onPressed: _logout,
                 child: const Text('Logout'),
+              ),
+
+              //Copyright at Bottom of Page
+              const SizedBox(height: 10),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Copyright(),
               ),
             ],
           ),
