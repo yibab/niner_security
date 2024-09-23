@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:niner_security/screens/login.dart';
+import '../db/address.dart';
 
+class LogoutButton extends StatelessWidget {
+  final BuildContext context;
 
-class SignoutButton extends StatelessWidget {
-
-  final Function()? onTap;
-
-  const SignoutButton({super.key, required this.onTap});
+  const LogoutButton({super.key, required this.context});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-            color: const Color(0xFF00703C),
-            borderRadius: BorderRadius.circular(8)),
-        child: const Center(
-          child: Text(
-            "Sign Out",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-            ),
-          ),
-        ),
-      ),
-    );
+    return OutlinedButton(
+        onPressed: () {signOut(context);}, child: const Text("Log Out"));
   }
+}
+
+ signOut(context) async {
+  pb.authStore.clear();
+  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login()));
 }

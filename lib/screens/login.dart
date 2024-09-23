@@ -6,7 +6,6 @@ import 'package:niner_security/screens/home.dart';
 import 'package:niner_security/screens/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:niner_security/widgets/copyright.dart';
 
 
 
@@ -66,7 +65,6 @@ class _LoginState extends State<Login> {
 
     // If there's a token, manually set it in the authStore
     if (token != null) {
-      print ("Token: $token");
       pb.authStore.save(token, null); // Save the token, no need to pass model yet
 
       // Check if the token is still valid
@@ -95,7 +93,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -118,21 +115,24 @@ class _LoginState extends State<Login> {
                               color: Color(0xFF00703C),
                               blurRadius: 1,
                               offset: Offset(1, 1)
-                          ),
+                          )
                         ],
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         fontSize: 60)),
+
               ),
-              //Sign In Text
-              const SizedBox(height: 5),
-              Text(
-                'Sign In',
-                style: GoogleFonts.bebasNeue(
-                    textStyle: const TextStyle(
-                        color: Color(0xFF000000),
-                        fontSize: 35)),
-              ),
+
+            //Sign In Text
+            const SizedBox(height: 5),
+            Text(
+              'Sign In',
+              style: GoogleFonts.bebasNeue(
+                  textStyle: const TextStyle(
+                      color: Color(0xFF000000),
+                      fontSize: 35)),
+
+            ),
 
               //Email Field
               const SizedBox(height: 10),
@@ -170,7 +170,7 @@ class _LoginState extends State<Login> {
                           context,
                           MaterialPageRoute(builder: (context) => const SignUp()),
                         );
-                        },
+                      },
                       child: const Text(
                         'Sign Up',
                         style: TextStyle(
@@ -215,12 +215,7 @@ class _LoginState extends State<Login> {
                     }
                   }
               ),
-              const Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: Copyright(),
-              ),
-              ],
+            ],
           ),
         ),
       ),

@@ -5,8 +5,6 @@ import 'package:niner_security/widgets/login_text_field.dart';
 import 'package:niner_security/widgets/create_account.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:niner_security/widgets/copyright.dart';
-
 
 
 
@@ -61,7 +59,6 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -84,13 +81,12 @@ class _SignUpState extends State<SignUp> {
                             color: Color(0xFF00703C),
                             blurRadius: 1,
                             offset: Offset(1, 1)
-                          ),
+                          )
                         ],
                         fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         fontSize: 60)),
               ),
-
 
               //Sign Up Text
               const SizedBox(height: 5),
@@ -176,8 +172,6 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
 
-
-
               //Sign In Button
               //DO SIGN IN LOGIC
               const SizedBox(height: 15),
@@ -231,11 +225,6 @@ class _SignUpState extends State<SignUp> {
 
                   }
                 },
-              ),
-              const Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: Copyright(),
               ),
             ],
           ),
