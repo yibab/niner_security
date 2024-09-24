@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:niner_security/widgets/niner_text.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import '../widgets/copyright.dart';
 import 'login.dart';
+import 'package:niner_security/widgets/navbar.dart';
 
 // Initialize Secure Storage
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
@@ -98,40 +100,22 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               const SizedBox(height: 7.5),
-              Text(
-                'Niner Security',
-                style: GoogleFonts.bebasNeue(
-                  textStyle: const TextStyle(
-                    color: Color(0xFFAD9651),
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic,
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 2,
-                        offset: Offset(2.5, 2.5),
-                      ),
-                      Shadow(
-                        color: Color(0xFF00703C),
-                        blurRadius: 1,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              const NinerText(),
+              const SizedBox(height: 10),
+
               const SizedBox(height: 20),
               Text(
                 'Welcome, $username',
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
+
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _logout,
                 child: const Text('Logout'),
               ),
 
+              const Navbar(),
               //Copyright at Bottom of Page
               const SizedBox(height: 10),
               const Spacer(),
