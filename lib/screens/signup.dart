@@ -114,13 +114,7 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
 
-                    //Copyright at Bottom of Page
-                    const SizedBox(height: 10),
-                    const Spacer(),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 15),
-                      child: Copyright(),
-                    ),
+
                   ],
                 ),
               ),
@@ -199,6 +193,14 @@ class SignUp extends StatelessWidget {
                     }
                   }
                 },
+              ),
+
+              //Copyright at Bottom of Page
+              const SizedBox(height: 10),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Copyright(),
               ),
             ],
           ),
