@@ -17,6 +17,7 @@ By giving students direct communication with emergency services and campus staff
 6) Please make sure you have also a virtual device setup. On the righthand side there should be a "Device Manager" press it, and press the "+" to create a virtual device phone with the playstore.
 7) Lastly, run "./pocketbase serve". This allows communication with the database so ensure to run this command in the terminal each time you re-enter Android Studio for the application.
 8) If not use to how to run programs in Android Studio, press the play button in the top right side to run the app.
+
 # Usage Details
 ### Sign Up:
 - Tap on the 'Sign Up' text on the login page
@@ -27,6 +28,21 @@ By giving students direct communication with emergency services and campus staff
 ### Sign In:
 - Enter correct email and password
 - Press 'Sign In' to sign in
+### Home:
+It is currently in development and will serve as the main hub for the app. So the functionality for it right now is:
+- Access to Navigation to the other pages
+### Emergency Services:
+It is currently in development and will serve as the area to get in touch of emergency services on campus. The functionality for it right now is:
+- Access to contact campus police
+- Access to get in touch with any other emergency service avaliable on campus
+### Niner Alerts:
+It is currently in development and will serve as the area to look at any alerts that campus police have put out. The functionality for it right now is:
+- A list of campus police reports that the students can look at
+### Lost & Found:
+It is also in development and will serve as the are to send posts and users to look at posts of people who are missing things. The functionality for it right now is:
+- A form to report lost items including item description, location, and contact information
+- List of items that are either found or still missing
+
 
 # Team's Progress
 Currently we are working at getting the user able to post to the database, pages setup for each of the things we want to feature for the application, and what we want to go on for each page.
