@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/screens/make_report.dart';
+import 'package:niner_security/screens/reports.dart';
 import 'package:niner_security/widgets/logout_button.dart';
 import 'package:niner_security/widgets/niner_text.dart';
 
@@ -29,7 +30,10 @@ class Home extends StatelessWidget {
                 child: Row(
                   children: [
                     OutlinedButton(
-                        onPressed: () {}, child: const Text("My reports")),
+                        onPressed: () {Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Reports()),
+                        );}, child: const Text("My reports")),
                     const Expanded(
                         child: TextButton(onPressed: null, child: Text(""))),
                     LogoutButton(context: context)
