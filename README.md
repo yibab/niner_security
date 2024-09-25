@@ -18,6 +18,15 @@ By giving students direct communication with emergency services and campus staff
 7) Lastly, run "./pocketbase serve". This allows communication with the database so ensure to run this command in the terminal each time you re-enter Android Studio for the application.
 8) If not use to how to run programs in Android Studio, press the play button in the top right side to run the app.
 # Usage Details
+### Sign Up:
+- Tap on the 'Sign Up' text on the login page
+- Enter name, email, password, password confirm
+- Email must be an UNC Charlotte email
+- Password must be no shorter than 8 characters and no longer than 72 characters
+- Press 'Sign Up' to sign up
+### Sign In:
+- Enter correct email and password
+- Press 'Sign In' to sign in
 
 # Team's Progress
 Currently we are working at getting the user able to post to the database, pages setup for each of the things we want to feature for the application, and what we want to go on for each page.
