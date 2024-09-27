@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: pb.authStore.isValid ?  Home() :  Login(),
+      home: pb.authStore.isValid ?  const Home() :  Login(),
     );
   }
 }
