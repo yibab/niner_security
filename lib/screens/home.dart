@@ -12,7 +12,7 @@ import '../core/utils.dart';
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class Home extends StatelessWidget {
-  Home({super.key});
+  const Home({super.key});
 
   // String name = pb.authStore.model.data['name'];
 
@@ -45,13 +45,13 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF00703C),
+                    backgroundColor: const Color(0xFF00703C),
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
@@ -62,17 +62,17 @@ class Home extends StatelessWidget {
                               const MakeReport(reportType: 'general')),
                     );
                   },
-                  icon: const Icon(Icons.access_alarm),
+                  icon: const Icon(Icons.add_circle),
                   label: const Text('Make a General Report', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF00703C),
+                    backgroundColor: const Color(0xFF00703C),
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
@@ -83,17 +83,17 @@ class Home extends StatelessWidget {
                               const MakeReport(reportType: 'lost item')),
                     );
                   },
-                  icon: const Icon(Icons.access_alarm),
+                  icon: const Icon(Icons.search),
                   label: const Text('Report a Missing Item', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFF00703C),
+                    backgroundColor: const Color(0xFF00703C),
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
@@ -104,11 +104,11 @@ class Home extends StatelessWidget {
                               const MakeReport(reportType: 'car incident')),
                     );
                   },
-                  icon: const Icon(Icons.access_alarm),
+                  icon: const Icon(Icons.car_crash_outlined),
                   label: const Text('Report Car Related Incident', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               SizedBox(
                 height: 90,
                 width: 350,
@@ -120,14 +120,14 @@ class Home extends StatelessWidget {
                   onPressed: () {
                     () => urlLaunch('tel:704237-7075');
                   },
-                  icon: const Icon(Icons.access_alarm),
+                  icon: const Icon(Icons.local_police_outlined),
                   label: const Text('Campus Police Emergency Number', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
-              Copyright(),
+              const Copyright(),
             ],
           ),
         ),
