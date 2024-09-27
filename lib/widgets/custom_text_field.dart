@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class LoginTextField extends StatelessWidget {
-  final controller;
+  final TextEditingController controller;
   final String hintText;
   final bool obscureText;
 

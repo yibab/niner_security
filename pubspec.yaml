@@ -38,6 +38,7 @@ dependencies:
   pocketbase: ^0.18.1
   google_fonts: ^6.2.1
   flutter_secure_storage: ^9.2.2
+  url_launcher: ^6.3.0
 
 
 
@@ -87,7 +88,7 @@ flutter:
   assets:
     - assets/
 
-#  - lib/images/
+  #  - lib/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
