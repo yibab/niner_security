@@ -7,6 +7,7 @@ import 'package:niner_security/screens/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../db/address.dart';
+import '../widgets/copyright.dart';
 import '../widgets/niner_text.dart';
 
 class Login extends StatelessWidget {
@@ -18,6 +19,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -84,11 +86,18 @@ class Login extends StatelessWidget {
                 ),
               ),
 
-              //FIX SIGN IN FOR USER
               const SizedBox(height: 10),
               SigninButton(onTap: () {
                 signIn(emailController, passwordController, context);
               }),
+
+              //Copyright at Bottom of Page
+              const SizedBox(height: 10),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Copyright(),
+              ),
             ],
           ),
         ),
@@ -117,7 +126,7 @@ signIn(dynamic emailController, dynamic passwordController,
 
 // Authenticate user with PocketBase
     final authData =
-        await pb.collection('users').authWithPassword(email, password);
+    await pb.collection('users').authWithPassword(email, password);
 
 // Save the auth token securely
     await secureStorage.write(key: 'auth_token', value: authData.token);
