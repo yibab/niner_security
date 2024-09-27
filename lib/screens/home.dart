@@ -5,13 +5,13 @@ import 'package:niner_security/screens/reports.dart';
 import 'package:niner_security/widgets/logout_button.dart';
 import 'package:niner_security/widgets/niner_text.dart';
 
+import '../core/utils.dart';
 
 // Initialize Secure Storage
 const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class Home extends StatelessWidget {
-   Home({super.key});
-
+  Home({super.key});
 
   // String name = pb.authStore.model.data['name'];
 
@@ -30,10 +30,14 @@ class Home extends StatelessWidget {
                 child: Row(
                   children: [
                     OutlinedButton(
-                        onPressed: () {Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const Reports()),
-                        );}, child: const Text("My reports")),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Reports()),
+                          );
+                        },
+                        child: const Text("My reports")),
                     const Expanded(
                         child: TextButton(onPressed: null, child: Text(""))),
                     LogoutButton(context: context)
@@ -41,10 +45,23 @@ class Home extends StatelessWidget {
                 ),
               ),
               OutlinedButton(
-                  onPressed: () {Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MakeReport()),
-                  );}, child: const Text("Make a report")),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MakeReport()),
+                    );
+                  },
+                  child: const Text("Make a report")),
+              Spacer(),
+              OutlinedButton(
+                  onPressed: () {
+                    () => urlLaunch('tel:704237-7075');
+                  },
+                  child: Text("Campus Police Emergency Number")),
+              SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),
