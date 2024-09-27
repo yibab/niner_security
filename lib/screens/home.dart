@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/screens/make_report.dart';
 import 'package:niner_security/screens/reports.dart';
+import 'package:niner_security/widgets/footer.dart';
 import 'package:niner_security/widgets/logout_button.dart';
 import 'package:niner_security/widgets/niner_text.dart';
 
@@ -18,7 +19,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFCCFFDD),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -44,24 +45,89 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              OutlinedButton(
+              Spacer(),
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF00703C),
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const MakeReport()),
+                          builder: (context) =>
+                              const MakeReport(reportType: 'general')),
                     );
                   },
-                  child: const Text("Make a report")),
+                  icon: const Icon(Icons.access_alarm),
+                  label: const Text('Make a General Report', style: TextStyle(fontSize: 20),),
+                ),
+              ),
               Spacer(),
-              OutlinedButton(
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF00703C),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const MakeReport(reportType: 'lost item')),
+                    );
+                  },
+                  icon: const Icon(Icons.access_alarm),
+                  label: const Text('Report a Missing Item', style: TextStyle(fontSize: 20),),
+                ),
+              ),
+              Spacer(),
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Color(0xFF00703C),
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const MakeReport(reportType: 'car incident')),
+                    );
+                  },
+                  icon: const Icon(Icons.access_alarm),
+                  label: const Text('Report Car Related Incident', style: TextStyle(fontSize: 20),),
+                ),
+              ),
+              Spacer(),
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    foregroundColor: Colors.white,
+                  ),
                   onPressed: () {
                     () => urlLaunch('tel:704237-7075');
                   },
-                  child: Text("Campus Police Emergency Number")),
+                  icon: const Icon(Icons.access_alarm),
+                  label: const Text('Campus Police Emergency Number', style: TextStyle(fontSize: 20),),
+                ),
+              ),
               SizedBox(
                 height: 50,
-              )
+              ),
+              Copyright(),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:niner_security/widgets/footer.dart';
 
 import '../db/address.dart';
 import '../widgets/niner_text.dart';
@@ -42,24 +43,36 @@ class _ReportsState extends State<Reports> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: NinerText(),
+        title: const NinerText(),
       ),
-      body: isLoading
-          ? Center(child: CircularProgressIndicator())
-          : ListView.separated(
-              itemCount: collections.length,
-              itemBuilder: (context, index) {
-                final collection = collections[index];
-                return ListTile(
-                  shape: RoundedRectangleBorder(side: BorderSide(color: Color(0xFF00703C), width: 2),
-                  borderRadius: BorderRadius.circular(20)),
-                  title: Text(collection.getStringValue('report')),
-                  subtitle: Row(
-                    children: [Text(collection.getStringValue('type'))],
+      body: Column(
+        children: [
+          Expanded(
+            child: isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.separated(
+                    itemCount: collections.length,
+                    itemBuilder: (context, index) {
+                      final collection = collections[index];
+                      return ListTile(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Color(0xFF00703C), width: 2),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        title: Text(collection.getStringValue('report')),
+                        subtitle: Row(
+                          children: [Text(collection.getStringValue('type'))],
+                        ),
+                      );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return const SizedBox(height: 20);
+                    },
                   ),
-                );
-              }, separatorBuilder: (BuildContext context, int index) { return SizedBox(height: 20); },
-            ),
+          ),
+          const Copyright(),
+        ],
+      ),
     );
   }
 }
