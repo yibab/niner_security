@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/login.dart';
 import 'package:niner_security/widgets/custom_text_field.dart';
@@ -6,12 +7,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:niner_security/widgets/show_alert.dart';
 
 import '../db/address.dart';
+import '../widgets/copyright.dart';
 import '../widgets/niner_text.dart';
 
 
 
 class SignUp extends StatelessWidget {
-   SignUp({super.key});
+  SignUp({super.key});
 
   //Controllers for Database
   final emailController = TextEditingController();
@@ -111,6 +113,8 @@ class SignUp extends StatelessWidget {
                         ),
                       ),
                     ),
+
+
                   ],
                 ),
               ),
@@ -189,6 +193,14 @@ class SignUp extends StatelessWidget {
                     }
                   }
                 },
+              ),
+
+              //Copyright at Bottom of Page
+              const SizedBox(height: 10),
+              const Spacer(),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Copyright(),
               ),
             ],
           ),
