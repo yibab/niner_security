@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/screens/make_report.dart';
 import 'package:niner_security/screens/reports.dart';
 import 'package:niner_security/widgets/footer.dart';
@@ -9,7 +8,6 @@ import 'package:niner_security/widgets/niner_text.dart';
 import '../core/utils.dart';
 
 // Initialize Secure Storage
-const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class Home extends StatelessWidget {
   const Home({super.key});

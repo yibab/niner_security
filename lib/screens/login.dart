@@ -125,11 +125,9 @@ signIn(dynamic emailController, dynamic passwordController,
     }
 
 // Authenticate user with PocketBase
-    final authData =
     await pb.collection('users').authWithPassword(email, password);
 
-// Save the auth token securely
-    await secureStorage.write(key: 'auth_token', value: authData.token);
+
 
 // Navigate to Home screen after successful login\
     Navigator.of(context).push(
