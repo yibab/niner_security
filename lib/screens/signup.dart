@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/login.dart';
 import 'package:niner_security/widgets/custom_text_field.dart';
@@ -9,8 +8,6 @@ import 'package:niner_security/widgets/show_alert.dart';
 import '../db/address.dart';
 import '../widgets/copyright.dart';
 import '../widgets/niner_text.dart';
-
-
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
@@ -24,11 +21,10 @@ class SignUp extends StatelessWidget {
 
   final nameController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -43,9 +39,8 @@ class SignUp extends StatelessWidget {
               Text(
                 'Sign Up',
                 style: GoogleFonts.bebasNeue(
-                    textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 35)),
+                    textStyle:
+                        const TextStyle(color: Colors.black, fontSize: 35)),
               ),
 
               //Name Field
@@ -57,7 +52,6 @@ class SignUp extends StatelessWidget {
               ),
 
               //Username Field
-
 
               //Email Field
               const SizedBox(height: 10),
@@ -88,33 +82,29 @@ class SignUp extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween, // Adjust alignment
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // Adjust alignment
                   children: [
                     const Text(
                       'Already Have an Account?',
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold
-                      ),
+                          color: Colors.black, fontWeight: FontWeight.bold),
                     ),
                     GestureDetector(
                       onTap: () {
                         // Navigate to the Sign Up screen
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>   Login()),
+                          MaterialPageRoute(builder: (context) => Login()),
                         );
                       },
                       child: const Text(
                         'Login',
                         style: TextStyle(
                             color: Color(0xFF00703C),
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
@@ -133,21 +123,26 @@ class SignUp extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return const ShowAlert(message: "Email, Password, and Name cannot be empty");
+                        return const ShowAlert(
+                            message:
+                                "Email, Password, and Name cannot be empty");
                       },
                     );
                   } else if (password != passwordConfirm) {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return const ShowAlert(message: "Passwords do not match!");
+                        return const ShowAlert(
+                            message: "Passwords do not match!");
                       },
                     );
-                  } else if (!email.endsWith('@uncc.edu') && !email.endsWith('@charlotte.edu')) {
+                  } else if (!email.endsWith('@uncc.edu') &&
+                      !email.endsWith('@charlotte.edu')) {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return const ShowAlert(message: "Please enter your school email address!");
+                        return const ShowAlert(
+                            message: "Please enter your school email address!");
                       },
                     );
                   } else {
@@ -155,7 +150,9 @@ class SignUp extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (BuildContext context) {
-                          return const ShowAlert(message: "Password must be between 8 and 72 characters");
+                          return const ShowAlert(
+                              message:
+                                  "Password must be between 8 and 72 characters");
                         },
                       );
                       return;
@@ -172,10 +169,12 @@ class SignUp extends StatelessWidget {
                     try {
                       await pb.collection('users').create(body: body);
 
-                      showDialog( // Alert for successful signup
+                      showDialog(
+                        // Alert for successful signup
                         context: context,
                         builder: (BuildContext context) {
-                          return const ShowAlert(message: "Sign Up successful!");
+                          return const ShowAlert(
+                              message: "Sign Up successful!");
                         },
                       );
 
@@ -198,10 +197,7 @@ class SignUp extends StatelessWidget {
               //Copyright at Bottom of Page
               const SizedBox(height: 10),
               const Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: Copyright(),
-              ),
+              const Copyright(),
             ],
           ),
         ),

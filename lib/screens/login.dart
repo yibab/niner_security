@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset : false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -94,10 +94,7 @@ class Login extends StatelessWidget {
               //Copyright at Bottom of Page
               const SizedBox(height: 10),
               const Spacer(),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 15),
-                child: Copyright(),
-              ),
+              const Copyright(),
             ],
           ),
         ),
@@ -127,11 +124,9 @@ signIn(dynamic emailController, dynamic passwordController,
 // Authenticate user with PocketBase
     await pb.collection('users').authWithPassword(email, password);
 
-
-
 // Navigate to Home screen after successful login\
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) =>  const Home()),
+      MaterialPageRoute(builder: (context) => const Home()),
     );
   } catch (e) {
     showDialog(
