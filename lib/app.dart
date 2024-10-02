@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:niner_security/screens/home.dart';
 import 'package:niner_security/screens/login.dart';
 
 import 'db/address.dart';
 
-const FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: pb.authStore.isValid ?  Home() :  Login(),
+      home: pb.authStore.isValid ?  const Home() :  Login(),
     );
   }
 }

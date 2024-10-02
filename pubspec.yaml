@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   pocketbase: ^0.18.1
   google_fonts: ^6.2.1
-  flutter_secure_storage: ^9.2.2
   url_launcher: ^6.3.0
 
 
@@ -85,8 +84,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/
+#  assets:
 
   #  - lib/images/
   #   - images/a_dot_ham.jpeg
