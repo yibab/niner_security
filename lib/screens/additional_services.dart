@@ -59,7 +59,7 @@ class AdditionalServices extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 50),
+            const SizedBox(height: 70),
             const Text(
               "Non-Emergency Contact",
               style: TextStyle(
@@ -67,16 +67,17 @@ class AdditionalServices extends StatelessWidget {
                 fontSize: 30
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Text(
-              "704git git -687-8300",
+              "704-687-8300",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
               ),
             ),
 
-            const SizedBox(height: 50),
+
+            const SizedBox(height: 85),
             const Text(
               "Emergency Management",
               style: TextStyle(
@@ -84,7 +85,7 @@ class AdditionalServices extends StatelessWidget {
                 fontSize: 30
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Text(
               "704-687-7884",
               style: TextStyle(
@@ -92,7 +93,7 @@ class AdditionalServices extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),
             ),
-            const SizedBox(height: 50,),
+            const SizedBox(height: 85),
             const Text(
               "Environmental Health & Safety",
               style: TextStyle(
@@ -100,7 +101,7 @@ class AdditionalServices extends StatelessWidget {
                 fontSize: 30
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Text(
               "704-687-1111",
               style: TextStyle(
@@ -108,7 +109,7 @@ class AdditionalServices extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),
             ),
-            const SizedBox(height: 50,),
+            const SizedBox(height: 85),
             const Text(
               "Facilities Management Line",
               style: TextStyle(
@@ -116,7 +117,7 @@ class AdditionalServices extends StatelessWidget {
                 fontSize: 30
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Text(
                 "704-687-0562",
               style: TextStyle(

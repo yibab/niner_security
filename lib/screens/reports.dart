@@ -47,7 +47,7 @@ class _ReportsState extends State<Reports> {
         flexibleSpace: Stack(
           children: [
             Container(
-              color: Color(0xFF00703C),
+              color: const Color(0xFF00703C),
             ),
             Opacity(opacity: .3,
               child: Container(
@@ -72,7 +72,7 @@ class _ReportsState extends State<Reports> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
@@ -86,14 +86,28 @@ class _ReportsState extends State<Reports> {
                     side: const BorderSide(color: Color(0xFF00703C), width: 2),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  title: Text(collection.getStringValue('report_name'), style: TextStyle(fontWeight: FontWeight.bold),),
+                  title: Text(collection.getStringValue('report_name'),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
                   tileColor: Colors.white,
                   subtitle: ListBody(
-                    children: [Text(collection.getStringValue('type'), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(collection.getStringValue('contact'), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(collection.getStringValue('location'), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(collection.getStringValue('user_description'), style: TextStyle(fontWeight: FontWeight.bold)),
-                      Text(collection.getStringValue('disposition'), style: TextStyle(fontWeight: FontWeight.bold))],
+                    children: [
+                      Text("Description: ${collection.getStringValue('user_description')}",
+                        style: const TextStyle(fontWeight: FontWeight.bold)
+                    ),
+                      const SizedBox(height: 5),
+                      Text( "Location: ${collection.getStringValue('location')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      ),
+                      const SizedBox(height: 5),
+                      Text("Contact Information: ${collection.getStringValue('contact')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      ),
+                      const SizedBox(height: 5),
+                      Text("Submitted at: ${collection.getStringValue('datetime')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      )
+                    ],
                   ),
                 );
               },
