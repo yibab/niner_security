@@ -11,6 +11,7 @@ class MakeReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       appBar: AppBar(
         title: const NinerText(),
