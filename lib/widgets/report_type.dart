@@ -5,18 +5,12 @@ import 'package:niner_security/widgets/show_alert.dart';
 import '../db/address.dart';
 import '../screens/home.dart';
 
-class ReportType extends StatefulWidget {
+class ReportType extends StatelessWidget {
   final String reportType;
-  ReportType({super.key, required this.reportType});
+   ReportType({super.key, required this.reportType});
 
-  @override
-  State<ReportType> createState() => _ReportTypeState();
-}
-
-class _ReportTypeState extends State<ReportType> {
   final reportMessageController = TextEditingController();
 
-  String reportType = 'general';
 
 
   @override
@@ -70,7 +64,16 @@ class _ReportTypeState extends State<ReportType> {
                       );
                     }
                   },
-                  child: const Text("Submit")),
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
+                  child: const Text("Submit",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black
+                    ),
+                  ),
+              ),
             ],
           ),
         ),
