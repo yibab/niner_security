@@ -118,6 +118,9 @@ class SignUp extends StatelessWidget {
                   final password = passwordController.text.trim();
                   final passwordConfirm = passwordConfirmController.text.trim();
                   final name = nameController.text.trim();
+                  final username;
+                  int atSymbolIndex;
+
 
                   if (email.isEmpty || password.isEmpty || name.isEmpty) {
                     showDialog(
@@ -158,8 +161,14 @@ class SignUp extends StatelessWidget {
                       return;
                     }
 
+                    //Put username field as the beginning of their email
+                    atSymbolIndex = email.indexOf('@');
+                    username = email.substring(0, atSymbolIndex);
+
+
+
                     final body = <String, dynamic>{
-                      "username": name,
+                      "username": username,
                       "email": email,
                       "password": password,
                       "passwordConfirm": passwordConfirm,
