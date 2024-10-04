@@ -77,6 +77,7 @@ class _ReportsState extends State<Reports> {
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : ListView.separated(
+              padding: const EdgeInsets.all(8.0),
               itemCount: collections.length,
               itemBuilder: (context, index) {
                 final collection = collections[index];
@@ -85,10 +86,14 @@ class _ReportsState extends State<Reports> {
                     side: const BorderSide(color: Color(0xFF00703C), width: 2),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  title: Text(collection.getStringValue('report'), style: TextStyle(fontWeight: FontWeight.bold),),
+                  title: Text(collection.getStringValue('report_name'), style: TextStyle(fontWeight: FontWeight.bold),),
                   tileColor: Colors.white,
-                  subtitle: Row(
-                    children: [Text(collection.getStringValue('type'), style: TextStyle(fontWeight: FontWeight.bold),)],
+                  subtitle: ListBody(
+                    children: [Text(collection.getStringValue('type'), style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(collection.getStringValue('contact'), style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(collection.getStringValue('location'), style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(collection.getStringValue('user_description'), style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text(collection.getStringValue('disposition'), style: TextStyle(fontWeight: FontWeight.bold))],
                   ),
                 );
               },
