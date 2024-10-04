@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:niner_security/screens/additional_services.dart';
 import 'package:niner_security/screens/make_report.dart';
 import 'package:niner_security/screens/reports.dart';
 import 'package:niner_security/widgets/footer.dart';
@@ -127,8 +128,33 @@ class Home extends StatelessWidget {
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xFFFF5050),
+                    backgroundColor: Colors.purple.shade300,
                     foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
+
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AdditionalServices()),
+                    );
+                  },
+                  icon: const Icon(Icons.warning_amber),
+                  label: const Text('Additional Emergency Services', style: TextStyle(fontSize: 20),),
+                ),
+              ),
+              SizedBox(height: 30),
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                      backgroundColor: Color(0xFFFF5050),
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)
                       ),
