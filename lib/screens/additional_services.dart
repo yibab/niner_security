@@ -69,7 +69,7 @@ class AdditionalServices extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const Text(
-              "704git -687-8300",
+              "704git git -687-8300",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold
