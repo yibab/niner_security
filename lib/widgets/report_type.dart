@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:niner_security/widgets/custom_text_field.dart';
 import 'package:niner_security/widgets/show_alert.dart';
 
@@ -8,22 +9,46 @@ import '../screens/home.dart';
 class ReportType extends StatelessWidget {
   final String reportType;
    ReportType({super.key, required this.reportType});
+   final String disposition = "submitted";
 
+   final reportNameController = TextEditingController();
   final reportMessageController = TextEditingController();
-
-
+  final contactInfoController = TextEditingController();
+  final locationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 5),
+        Text(
+          'Make A Report',
+          style: GoogleFonts.bebasNeue(
+              textStyle: const TextStyle(
+                  color: Color(0xFF000000), fontSize: 35)),
+        ),
+        const SizedBox(height: 15),
+        LoginTextField(
+          controller: reportNameController,
+          hintText: "Enter a name for your report",
+          obscureText: false),
         const SizedBox(
           height: 15,
         ),
         LoginTextField(
             controller: reportMessageController,
-            hintText: "Enter report here",
+            hintText: "Enter report description here",
             obscureText: false),
+        const SizedBox(height: 15),
+        LoginTextField(
+            controller: locationController,
+            hintText: "Enter the location of your report",
+            obscureText: false),
+        const SizedBox(height: 15),
+        LoginTextField(
+          controller: contactInfoController,
+          hintText: "Enter additional contact information",
+          obscureText: false),
         const SizedBox(
           height: 15,
         ),
@@ -37,8 +62,14 @@ class ReportType extends StatelessWidget {
 
                     final body = <String, dynamic>{
                       "user": pb.authStore.model.id,
-                      "report": reportMessageController.text.trim(),
+                      "report_name": reportNameController.text.trim(),
+                      //"datetime": DateTime.timestamp(),
+                      "contact": contactInfoController.text.trim(),
+                      "location": locationController.text.trim(),
+                      "user_description": reportMessageController.text.trim(),
                       "type": reportType,
+                      "admin_description": "",
+                      "disposition": disposition
                     };
 
                     try {
