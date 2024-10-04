@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
           child: Column(
@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
               const SizedBox(height: 7.5),
               const NinerText(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: Row(
                   children: [
                     OutlinedButton(
@@ -36,14 +36,17 @@ class Home extends StatelessWidget {
                                 builder: (context) => const Reports()),
                           );
                         },
-                        child: const Text("My reports")),
+                        child: const Text("My reports", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),), style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.white
+                    ),
+                    ),
                     const Expanded(
                         child: TextButton(onPressed: null, child: Text(""))),
                     LogoutButton(context: context)
                   ],
                 ),
               ),
-              const Spacer(),
+              SizedBox(height: 30),
               SizedBox(
                 height: 90,
                 width: 350,
@@ -51,80 +54,98 @@ class Home extends StatelessWidget {
                   style: TextButton.styleFrom(
                     backgroundColor: const Color(0xFF00703C),
                     foregroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)
+                    ),
+                    side: const BorderSide(color: Color(0xFF000000), width: 2)
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const MakeReport(reportType: 'general')),
+                          const MakeReport(reportType: 'general')),
                     );
                   },
                   icon: const Icon(Icons.add_circle),
                   label: const Text('Make a General Report', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              const Spacer(),
+              SizedBox(height: 30),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFF00703C),
+                    backgroundColor: const Color(0xFF2196F3),
                     foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const MakeReport(reportType: 'lost item')),
+                          const MakeReport(reportType: 'lost item')),
                     );
                   },
                   icon: const Icon(Icons.search),
                   label: const Text('Report a Missing Item', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              const Spacer(),
+              SizedBox(height: 30),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFF00703C),
+                    backgroundColor: const Color(0xFFFFB600),
                     foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
                   ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              const MakeReport(reportType: 'car incident')),
+                          const MakeReport(reportType: 'car incident')),
                     );
                   },
                   icon: const Icon(Icons.car_crash_outlined),
                   label: const Text('Report Car Related Incident', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              const Spacer(),
+              SizedBox(height: 30),
               SizedBox(
                 height: 90,
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color(0xFFFF5050),
                     foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
+
                   ),
                   onPressed: () {
-                    () => urlLaunch('tel:704237-7075');
+                        () => urlLaunch('tel:704237-7075');
                   },
                   icon: const Icon(Icons.local_police_outlined),
-                  label: const Text('Campus Police Emergency Number', style: TextStyle(fontSize: 20),),
+                  label: const Text('Contact Campus Police', style: TextStyle(fontSize: 20),),
                 ),
               ),
               const SizedBox(
                 height: 50,
               ),
+              const Spacer(),
               const Copyright(),
             ],
           ),
