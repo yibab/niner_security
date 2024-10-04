@@ -10,7 +10,10 @@ class LogoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-        onPressed: () {signOut(context);}, child: const Text("Log Out"));
+        onPressed: () {signOut(context);}, child: const Text("Log Out", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),  style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.white,
+    ),
+    );
   }
 }
 

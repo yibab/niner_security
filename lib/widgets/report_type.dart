@@ -46,7 +46,7 @@ class ReportType extends StatelessWidget {
 
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home()),
+                        MaterialPageRoute(builder: (context) => Home()),
                       );
                       showDialog(
                         context: context,
@@ -64,7 +64,16 @@ class ReportType extends StatelessWidget {
                       );
                     }
                   },
-                  child: const Text("Submit")),
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                ),
+                  child: const Text("Submit",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black
+                    ),
+                  ),
+              ),
             ],
           ),
         ),

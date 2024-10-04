@@ -11,9 +11,33 @@ class MakeReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFCCFFDD),
       appBar: AppBar(
         title: const NinerText(),
+        flexibleSpace: Stack(
+          children: [
+            Container(
+              color: Color(0xFF00703C)
+            ),
+            Opacity(opacity: .3,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.9),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+        iconTheme: const IconThemeData(
+            color: Colors.white
+        ),
       ),
       body: Column(
         children: [
@@ -33,6 +57,7 @@ class MakeReport extends StatelessWidget {
           const Copyright(),
         ],
       ),
+
     );
   }
 }

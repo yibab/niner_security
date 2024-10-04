@@ -40,7 +40,7 @@ class SignUp extends StatelessWidget {
                 'Sign Up',
                 style: GoogleFonts.bebasNeue(
                     textStyle:
-                        const TextStyle(color: Colors.black, fontSize: 35)),
+                    const TextStyle(color: Colors.black, fontSize: 35)),
               ),
 
               //Name Field
@@ -125,7 +125,7 @@ class SignUp extends StatelessWidget {
                       builder: (BuildContext context) {
                         return const ShowAlert(
                             message:
-                                "Email, Password, and Name cannot be empty");
+                            "Email, Password, and Name cannot be empty");
                       },
                     );
                   } else if (password != passwordConfirm) {
@@ -152,7 +152,7 @@ class SignUp extends StatelessWidget {
                         builder: (BuildContext context) {
                           return const ShowAlert(
                               message:
-                                  "Password must be between 8 and 72 characters");
+                              "Password must be between 8 and 72 characters");
                         },
                       );
                       return;
