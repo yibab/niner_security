@@ -10,6 +10,7 @@ class ReportType extends StatelessWidget {
   final String reportType;
    ReportType({super.key, required this.reportType});
    final String disposition = "submitted";
+   final DateTime datetime = DateTime.now();
 
    final reportNameController = TextEditingController();
   final reportMessageController = TextEditingController();
@@ -63,7 +64,7 @@ class ReportType extends StatelessWidget {
                     final body = <String, dynamic>{
                       "user": pb.authStore.model.id,
                       "report_name": reportNameController.text.trim(),
-                      //"datetime": DateTime.timestamp(),
+                      "datetime": datetime.toString(),
                       "contact": contactInfoController.text.trim(),
                       "location": locationController.text.trim(),
                       "user_description": reportMessageController.text.trim(),
