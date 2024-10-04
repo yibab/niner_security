@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:niner_security/widgets/footer.dart';
 import 'package:niner_security/widgets/niner_text.dart';
 import 'package:niner_security/widgets/report_type.dart';
@@ -11,6 +12,7 @@ class MakeReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       appBar: AppBar(
         title: const NinerText(),
