@@ -31,7 +31,7 @@ class Login extends StatelessWidget {
               //Sign In Text
               const SizedBox(height: 5),
               Text(
-                'Sign In',
+                'Test',
                 style: GoogleFonts.bebasNeue(
                     textStyle: const TextStyle(
                         color: Color(0xFF000000), fontSize: 35)),
