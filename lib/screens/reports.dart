@@ -42,24 +42,23 @@ class _ReportsState extends State<Reports> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       appBar: AppBar(
         flexibleSpace: Stack(
           children: [
             Container(
-              color: Color(0xFF00703C),
+              color: const Color(0xFF00703C),
             ),
             Opacity(opacity: .3,
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.black.withOpacity(0.9),
-                    Colors.transparent,
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.black.withOpacity(0.9),
+                      Colors.transparent,
+                    ],
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
                   ),
                 ),
               ),
@@ -68,17 +67,18 @@ class _ReportsState extends State<Reports> {
         ),
         title: const NinerText(),
         iconTheme: const IconThemeData(
-          color: Colors.white
+            color: Colors.white
         ),
       ),
       body: Column(
         children: [
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : ListView.separated(
               itemCount: collections.length,
+              padding: const EdgeInsets.all(8.0),
               itemBuilder: (context, index) {
                 final collection = collections[index];
                 return ListTile(
@@ -86,10 +86,28 @@ class _ReportsState extends State<Reports> {
                     side: const BorderSide(color: Color(0xFF00703C), width: 2),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  title: Text(collection.getStringValue('report'), style: TextStyle(fontWeight: FontWeight.bold),),
+                  title: Text(collection.getStringValue('report_name'),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
                   tileColor: Colors.white,
-                  subtitle: Row(
-                    children: [Text(collection.getStringValue('type'), style: TextStyle(fontWeight: FontWeight.bold),)],
+                  subtitle: ListBody(
+                    children: [
+                      Text("Description: ${collection.getStringValue('user_description')}",
+                        style: const TextStyle(fontWeight: FontWeight.bold)
+                    ),
+                      const SizedBox(height: 5),
+                      Text( "Location: ${collection.getStringValue('location')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      ),
+                      const SizedBox(height: 5),
+                      Text("Contact Information: ${collection.getStringValue('contact')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      ),
+                      const SizedBox(height: 5),
+                      Text("Submitted at: ${collection.getStringValue('datetime')}",
+                          style: const TextStyle(fontWeight: FontWeight.bold)
+                      )
+                    ],
                   ),
                 );
               },
