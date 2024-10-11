@@ -166,7 +166,6 @@ class SignUp extends StatelessWidget {
                     username = email.substring(0, atSymbolIndex);
 
 
-
                     final body = <String, dynamic>{
                       "username": username,
                       "email": email,
