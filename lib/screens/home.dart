@@ -36,13 +36,24 @@ class Home extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const Reports()),
                           );
-                        },
-                        child: const Text("My reports", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),), style: OutlinedButton.styleFrom(
+                        }, style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.white
+                      ),
+                        child: const Text("My reports", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
                     ),
-                    ),
-                    const Expanded(
-                        child: TextButton(onPressed: null, child: Text(""))),
+                  Spacer(),
+                  TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdditionalServices(),
+                        ),
+                      );
+                      },
+                    icon: const Icon(Icons.info),
+                    label: const Text(''),
+                  ),
                     LogoutButton(context: context)
                   ],
                 ),
@@ -122,31 +133,7 @@ class Home extends StatelessWidget {
                   label: const Text('Report Car Related Incident', style: TextStyle(fontSize: 20),),
                 ),
               ),
-              SizedBox(height: 30),
-              SizedBox(
-                height: 90,
-                width: 350,
-                child: TextButton.icon(
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.purple.shade300,
-                    foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40)
-                      ),
-                      side: const BorderSide(color: Color(0xFF000000), width: 2)
-
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => AdditionalServices()),
-                    );
-                  },
-                  icon: const Icon(Icons.warning_amber),
-                  label: const Text('Additional Emergency Services', style: TextStyle(fontSize: 20),),
-                ),
-              ),
+              Spacer(),
               SizedBox(height: 30),
               SizedBox(
                 height: 90,
