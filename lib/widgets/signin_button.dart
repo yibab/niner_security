@@ -24,7 +24,7 @@ class _SigninButtonState extends State<SigninButton> {
             borderRadius: BorderRadius.circular(8)),
         child: const Center(
           child: Text(
-            "Sign Up",
+            "Sign In",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
