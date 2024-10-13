@@ -30,30 +30,21 @@ class Home extends StatelessWidget {
                 child: Row(
                   children: [
                     OutlinedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Reports()),
-                          );
-                        }, style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.white
-                      ),
-                        child: const Text("My reports", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
-                    ),
-                  Spacer(),
-                  TextButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AdditionalServices(),
-                        ),
-                      );
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Reports()),
+                        );
                       },
-                    icon: const Icon(Icons.info),
-                    label: const Text(''),
-                  ),
+                      child: const Text("My reports", style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold),),
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.white
+                      ),
+                    ),
+                    const Expanded(
+                        child: TextButton(onPressed: null, child: Text(""))),
                     LogoutButton(context: context)
                   ],
                 ),
@@ -64,12 +55,12 @@ class Home extends StatelessWidget {
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFF00703C),
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40)
-                    ),
-                    side: const BorderSide(color: Color(0xFF000000), width: 2)
+                      backgroundColor: const Color(0xFF00703C),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
                   ),
                   onPressed: () {
                     Navigator.push(
@@ -80,7 +71,8 @@ class Home extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.add_circle),
-                  label: const Text('Make a General Report', style: TextStyle(fontSize: 20),),
+                  label: const Text(
+                    'Make a General Report', style: TextStyle(fontSize: 20),),
                 ),
               ),
               SizedBox(height: 30),
@@ -89,8 +81,8 @@ class Home extends StatelessWidget {
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFF2196F3),
-                    foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFF2196F3),
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)
                       ),
@@ -105,7 +97,8 @@ class Home extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.search),
-                  label: const Text('Report a Missing Item', style: TextStyle(fontSize: 20),),
+                  label: const Text(
+                    'Report a Missing Item', style: TextStyle(fontSize: 20),),
                 ),
               ),
               SizedBox(height: 30),
@@ -114,8 +107,8 @@ class Home extends StatelessWidget {
                 width: 350,
                 child: TextButton.icon(
                   style: TextButton.styleFrom(
-                    backgroundColor: const Color(0xFFFFB600),
-                    foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFFFFB600),
+                      foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(40)
                       ),
@@ -130,10 +123,36 @@ class Home extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.car_crash_outlined),
-                  label: const Text('Report Car Related Incident', style: TextStyle(fontSize: 20),),
+                  label: const Text('Report Car Related Incident',
+                    style: TextStyle(fontSize: 20),),
                 ),
               ),
-              Spacer(),
+              SizedBox(height: 30),
+              SizedBox(
+                height: 90,
+                width: 350,
+                child: TextButton.icon(
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.purple.shade300,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)
+                      ),
+                      side: const BorderSide(color: Color(0xFF000000), width: 2)
+
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AdditionalServices()),
+                    );
+                  },
+                  icon: const Icon(Icons.warning_amber),
+                  label: const Text('Additional Emergency Services',
+                    style: TextStyle(fontSize: 20),),
+                ),
+              ),
               SizedBox(height: 30),
               SizedBox(
                 height: 90,
@@ -146,13 +165,13 @@ class Home extends StatelessWidget {
                           borderRadius: BorderRadius.circular(40)
                       ),
                       side: const BorderSide(color: Color(0xFF000000), width: 2)
-
                   ),
                   onPressed: () {
                         () => urlLaunch('tel:704237-7075');
                   },
                   icon: const Icon(Icons.local_police_outlined),
-                  label: const Text('Contact Campus Police', style: TextStyle(fontSize: 20),),
+                  label: const Text(
+                    'Contact Campus Police', style: TextStyle(fontSize: 20),),
                 ),
               ),
               const SizedBox(
