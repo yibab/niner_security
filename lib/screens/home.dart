@@ -5,6 +5,7 @@ import 'package:niner_security/screens/reports.dart';
 import 'package:niner_security/widgets/footer.dart';
 import 'package:niner_security/widgets/logout_button.dart';
 import 'package:niner_security/widgets/niner_text.dart';
+import 'package:niner_security/widgets/navbar.dart';
 
 import '../core/utils.dart';
 
@@ -25,30 +26,8 @@ class Home extends StatelessWidget {
             children: [
               const SizedBox(height: 7.5),
               const NinerText(),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Row(
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Reports()),
-                        );
-                      },
-                      child: const Text("My reports", style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),),
-                      style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.white
-                      ),
-                    ),
-                    const Expanded(
-                        child: TextButton(onPressed: null, child: Text(""))),
-                    LogoutButton(context: context)
-                  ],
-                ),
-              ),
+              const SizedBox(height: 15),
+              const Navbar(),
               SizedBox(height: 30),
               SizedBox(
                 height: 90,
