@@ -45,4 +45,4 @@ It is also in development and will serve as the are to send posts and users to l
 
 
 # Team's Progress
-Currently we are working at getting the user able to post to the database, pages setup for each of the things we want to feature for the application, and what we want to go on for each page.
+Currenlty we are working on the admin dashboard to display posts made by the users.
