@@ -29,8 +29,18 @@ By giving students direct communication with emergency services and campus staff
 - Enter correct email and password
 - Press 'Sign In' to sign in
 ### Home:
-It is currently in development and will serve as the main hub for the app. So the functionality for it right now is:
-- Access to Navigation to the other pages
+- Access to navigation to create one of 3 reports. General, Missing Item, and Car Incident
+- Access to contact campus police
+- Access to view alerts create by the administratives of the web-application
+- Access to logout when done with application
+- Access to viewing any missing items users report
+### Make General/Missing Item/Car Incident Report
+- Tap on one of one of the three buttons provided
+- Enter in name for report
+- Enter in description for report
+- Enter in location for report
+- Enter in additional contact information
+- Press 'Submit' to send a report to backend
 ### Emergency Services:
 - Access to contact campus police
 ### Additional Emergency Services:
