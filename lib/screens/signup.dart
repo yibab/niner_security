@@ -174,6 +174,7 @@ class SignUp extends StatelessWidget {
                       "passwordConfirm": passwordConfirm,
                       "name": name,
                       "isAdmin": isAdmin,
+                      "emailVisibility" : true,
                     };
 
                     try {

@@ -7,6 +7,8 @@ import 'package:niner_security/widgets/report_type.dart';
 class MakeReport extends StatelessWidget {
   final String reportType;
 
+
+
   const MakeReport({super.key, required this.reportType});
 
   @override

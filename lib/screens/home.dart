@@ -19,6 +19,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       body: SafeArea(
         child: Center(
@@ -46,7 +47,7 @@ class Home extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                          const MakeReport(reportType: 'general')),
+                          const MakeReport(reportType: 'General')),
                     );
                   },
                   icon: const Icon(Icons.add_circle),
@@ -72,7 +73,7 @@ class Home extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                          const MakeReport(reportType: 'lost item')),
+                          const MakeReport(reportType: 'Lost Item')),
                     );
                   },
                   icon: const Icon(Icons.search),
@@ -98,7 +99,7 @@ class Home extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                          const MakeReport(reportType: 'car incident')),
+                          const MakeReport(reportType: 'Car Incident')),
                     );
                   },
                   icon: const Icon(Icons.car_crash_outlined),
