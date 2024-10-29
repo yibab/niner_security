@@ -32,12 +32,15 @@ By giving students direct communication with emergency services and campus staff
 It is currently in development and will serve as the main hub for the app. So the functionality for it right now is:
 - Access to Navigation to the other pages
 ### Emergency Services:
-It is currently in development and will serve as the area to get in touch of emergency services on campus. The functionality for it right now is:
 - Access to contact campus police
-- Access to get in touch with any other emergency service avaliable on campus
+### Additional Emergency Services:
+- Tap on 'Additional Emergency Services' Button on homepage
+- Access to contact other emergency services that are on campus through displayed phone numbers in which users aren't in an emergency.
 ### Niner Alerts:
 It is currently in development and will serve as the area to look at any alerts that campus police have put out. The functionality for it right now is:
 - A list of campus police reports that the students can look at
+### My Reports:
+Its is currently being reimplemented and will serve as users to view posts they have made and either edit them or remove them if they see fit.
 ### Lost & Found:
 It is also in development and will serve as the are to send posts and users to look at posts of people who are missing things. The functionality for it right now is:
 - A form to report lost items including item description, location, and contact information
@@ -45,4 +48,4 @@ It is also in development and will serve as the are to send posts and users to l
 
 
 # Team's Progress
-Currenlty we are working on the admin dashboard to display posts made by the users.
+Currently we are working on polishing the admin and user applications to ensure no oversight from previous sprints
