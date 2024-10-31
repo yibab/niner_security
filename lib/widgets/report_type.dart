@@ -10,7 +10,7 @@ import '../screens/home.dart';
 class ReportType extends StatelessWidget {
   final String reportType;
    ReportType({super.key, required this.reportType});
-   final String disposition = "submitted";
+   final String disposition = "Pending Investigation";
    final reportNameController = TextEditingController();
    final reportMessageController = TextEditingController();
    final contactInfoController = TextEditingController();
@@ -30,24 +30,24 @@ class ReportType extends StatelessWidget {
         const SizedBox(height: 15),
         LoginTextField(
           controller: reportNameController,
-          hintText: "Enter a name for your report",
+          hintText: "Please enter a title for your report.",
           obscureText: false),
         const SizedBox(
           height: 15,
         ),
         LoginTextField(
             controller: reportMessageController,
-            hintText: "Enter report description here",
+            hintText: "Please enter any details here.",
             obscureText: false),
         const SizedBox(height: 15),
         LoginTextField(
             controller: locationController,
-            hintText: "Enter the location of your report",
+            hintText: "Please enter the location for your report",
             obscureText: false),
         const SizedBox(height: 15),
         LoginTextField(
           controller: contactInfoController,
-          hintText: "Enter additional contact information",
+          hintText: "Please enter any additional contact information.",
           obscureText: false),
         const SizedBox(
           height: 15,
@@ -61,7 +61,7 @@ class ReportType extends StatelessWidget {
                   onPressed: () async {
 
                     final nowUtc = DateTime.now().toUtc();
-                    final estOffset = Duration(hours: -5);
+                    final estOffset = Duration(hours: - 4);
                     final estTime = nowUtc.add(estOffset);
                     final formattedDate = DateFormat('hh:mm a MM/dd/yyyy').format(estTime);
 
@@ -83,13 +83,6 @@ class ReportType extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
-                      );
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ShowAlert(
-                              message: "Report was successful!");
-                        },
                       );
                     } catch (e) {
                       showDialog(
