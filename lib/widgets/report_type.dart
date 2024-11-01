@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:niner_security/widgets/custom_text_field.dart';
 import 'package:niner_security/widgets/show_alert.dart';
-
+import 'package:intl/intl.dart';
 import '../db/address.dart';
 import '../screens/home.dart';
 
 class ReportType extends StatelessWidget {
   final String reportType;
    ReportType({super.key, required this.reportType});
-   final String disposition = "submitted";
+   final String disposition = "Pending Investigation";
    final reportNameController = TextEditingController();
    final reportMessageController = TextEditingController();
    final contactInfoController = TextEditingController();
    final locationController = TextEditingController();
-   final DateTime datetime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +30,24 @@ class ReportType extends StatelessWidget {
         const SizedBox(height: 15),
         LoginTextField(
           controller: reportNameController,
-          hintText: "Enter a name for your report",
+          hintText: "Please enter a title for your report.",
           obscureText: false),
         const SizedBox(
           height: 15,
         ),
         LoginTextField(
             controller: reportMessageController,
-            hintText: "Enter report description here",
+            hintText: "Please enter any details here.",
             obscureText: false),
         const SizedBox(height: 15),
         LoginTextField(
             controller: locationController,
-            hintText: "Enter the location of your report",
+            hintText: "Please enter the location for your report",
             obscureText: false),
         const SizedBox(height: 15),
         LoginTextField(
           controller: contactInfoController,
-          hintText: "Enter additional contact information",
+          hintText: "Please enter any additional contact information.",
           obscureText: false),
         const SizedBox(
           height: 15,
@@ -61,10 +60,15 @@ class ReportType extends StatelessWidget {
               OutlinedButton(
                   onPressed: () async {
 
+                    final nowUtc = DateTime.now().toUtc();
+                    final estOffset = Duration(hours: - 4);
+                    final estTime = nowUtc.add(estOffset);
+                    final formattedDate = DateFormat('hh:mm a MM/dd/yyyy').format(estTime);
+
                     final body = <String, dynamic>{
                       "user": pb.authStore.model.id,
                       "report_name": reportNameController.text.trim(),
-                      "datetime": datetime.toString(),
+                      "datetime": formattedDate,
                       "contact": contactInfoController.text.trim(),
                       "location": locationController.text.trim(),
                       "user_description": reportMessageController.text.trim(),
@@ -79,13 +83,6 @@ class ReportType extends StatelessWidget {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Home()),
-                      );
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ShowAlert(
-                              message: "Report was successful!");
-                        },
                       );
                     } catch (e) {
                       showDialog(

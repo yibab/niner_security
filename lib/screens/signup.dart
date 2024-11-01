@@ -119,6 +119,7 @@ class SignUp extends StatelessWidget {
                   final passwordConfirm = passwordConfirmController.text.trim();
                   final name = nameController.text.trim();
                   final username;
+                  final isAdmin = false;
                   int atSymbolIndex;
 
 
@@ -172,6 +173,8 @@ class SignUp extends StatelessWidget {
                       "password": password,
                       "passwordConfirm": passwordConfirm,
                       "name": name,
+                      "isAdmin": isAdmin,
+                      "emailVisibility" : true,
                     };
 
                     try {
