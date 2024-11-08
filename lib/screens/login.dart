@@ -15,6 +15,7 @@ class Login extends StatelessWidget {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final ValueNotifier<String?> errorNotifier = ValueNotifier<String?>(null);
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +91,25 @@ class Login extends StatelessWidget {
               SigninButton(onTap: () {
                 signIn(emailController, passwordController, context);
               }),
+              const SizedBox(height: 10),
+
+              ValueListenableBuilder<String?>(
+                valueListenable: errorNotifier,
+                builder: (context, errorMessage,child) {
+                  if(errorMessage == null)
+                    return const SizedBox.shrink();
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: Text(
+                      errorMessage,
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold
+                      )
+                    )
+                  );
+                },
+              ),
 
               //Copyright at Bottom of Page
               const SizedBox(height: 10),
@@ -101,40 +121,29 @@ class Login extends StatelessWidget {
       ),
     );
   }
-}
 
-signIn(dynamic emailController, dynamic passwordController,
-    BuildContext context) async {
-  try {
+  signIn(dynamic emailController, dynamic passwordController,
+      BuildContext context) async {
     final email = emailController.text.trim();
     final password = passwordController.text.trim();
 
-// Check for empty email and password fields
+    // Check for empty email and password fields
     if (email.isEmpty || password.isEmpty) {
-      showDialog(
-        // Use showDialog to display the alert
-        context: context,
-        builder: (BuildContext context) {
-          return const ShowAlert(message: "Email and Password cannot be empty");
-        },
-      );
+      errorNotifier.value = "Email and Password cannot be empty.";
       return;
     }
+    try {
+    // Authenticate user with PocketBase
+      await pb.collection('users').authWithPassword(email, password);
 
-// Authenticate user with PocketBase
-    await pb.collection('users').authWithPassword(email, password);
-
-// Navigate to Home screen after successful login\
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const Home()),
-    );
-  } catch (e) {
-    showDialog(
-      // Use showDialog to display the alert
-      context: context,
-      builder: (BuildContext context) {
-        return const ShowAlert(message: "Incorrect Email or Password");
-      },
-    );
+    // Navigate to Home screen after successful login\
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => const Home()),
+      );
+    } catch (e) {
+      errorNotifier.value = "Incorrect Email or Password.";
+    }
   }
 }
+
+
