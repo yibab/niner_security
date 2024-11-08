@@ -61,7 +61,7 @@ class ReportType extends StatelessWidget {
                   onPressed: () async {
 
                     final nowUtc = DateTime.now().toUtc();
-                    final estOffset = Duration(hours: - 4);
+                    final estOffset = Duration(hours: - 5);
                     final estTime = nowUtc.add(estOffset);
                     final formattedDate = DateFormat('hh:mm a MM/dd/yyyy').format(estTime);
 
