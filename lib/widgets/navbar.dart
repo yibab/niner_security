@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/login.dart';
+import 'package:niner_security/screens/reports.dart';
 import '../db/address.dart'; // Ensure you import the necessary package for pb
 
 class Navbar extends StatefulWidget {
@@ -15,6 +16,8 @@ class _NavbarState extends State<Navbar> {
   void _onItemTapped(int index) {
     if (index == 3) {
       signOut(context);
+    } else if(index == 2) {
+      reports(context);
     } else {
       setState(() {
         _selectedIndex = index;
@@ -41,7 +44,7 @@ class _NavbarState extends State<Navbar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.help),
-          label: 'Lost and Found',
+          label: 'My Reports',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.logout),
@@ -49,6 +52,13 @@ class _NavbarState extends State<Navbar> {
         ),
       ],
       onTap: _onItemTapped, // Handle item taps
+    );
+  }
+
+  reports(BuildContext context) async {
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Reports()),
     );
   }
 
