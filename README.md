@@ -3,6 +3,8 @@ This is an application for students at UNC Charlotte to enhance campus security 
 
 By giving students direct communication with emergency services and campus staff, it gives the students sense of security with ability to report things in real-time. The app aims to improve campus security and further the communication between students and campus police.
 
+[Link to the admin permissions used for this project](https://github.com/RielyMelvin/niner-security-admin)
+
 ### Key Features:
 - Report lost items on campus.
 - Contact emergency services (phone numbers protected from spam).
