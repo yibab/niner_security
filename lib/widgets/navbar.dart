@@ -13,6 +13,12 @@ class _NavbarState extends State<Navbar> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
+    if (index == 1){
+
+    }
+    if (index == 2){
+
+    }
     if (index == 3) {
       signOut(context);
     } else {
@@ -41,7 +47,7 @@ class _NavbarState extends State<Navbar> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.help),
-          label: 'Lost and Found',
+          label: 'My Reports',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.logout),
