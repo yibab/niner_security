@@ -109,7 +109,7 @@ class _ReportsState extends State<Reports> {
                       ),
                       // Text content
                       Text(
-                        collection.getStringValue('report_name'),
+                        "${collection.getStringValue('report_name')} - ${collection.getStringValue('type')}",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
@@ -123,7 +123,7 @@ class _ReportsState extends State<Reports> {
                   subtitle: ListBody(
                     children: [
                       Text(
-                        "Description: ${collection.getStringValue('user_description')}",
+                        "Disposition: ${collection.getStringValue('disposition')}",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
@@ -132,6 +132,14 @@ class _ReportsState extends State<Reports> {
                       const SizedBox(height: 5),
                       Text(
                         "Location: ${collection.getStringValue('location')}",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Times New Roman',
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        "Description: ${collection.getStringValue('user_description')}",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
