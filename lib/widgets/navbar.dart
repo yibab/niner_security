@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:niner_security/screens/alerts.dart';
 import 'package:niner_security/screens/login.dart';
-import '../db/address.dart'; // Ensure you import the necessary package for pb
-
+import 'package:niner_security/screens/reports.dart';
+import '../db/address.dart';
 class Navbar extends StatefulWidget {
   const Navbar({super.key});
 
@@ -14,12 +15,22 @@ class _NavbarState extends State<Navbar> {
 
   void _onItemTapped(int index) {
     if (index == 1){
-
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Alerts(),
+        ),
+      );
     }
-    if (index == 2){
-
+    else if (index == 2){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Reports(),
+        ),
+      );
     }
-    if (index == 3) {
+    else if (index == 3) {
       signOut(context);
     } else {
       setState(() {

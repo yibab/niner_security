@@ -14,7 +14,6 @@ import '../core/utils.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
-  // String name = pb.authStore.model.data['name'];
 
   @override
   Widget build(BuildContext context) {

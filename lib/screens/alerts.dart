@@ -4,15 +4,15 @@ import 'package:niner_security/widgets/footer.dart';
 import '../db/address.dart';
 import '../widgets/niner_text.dart';
 
-class Reports extends StatefulWidget {
-  const Reports({super.key});
+class Alerts extends StatefulWidget {
+  const Alerts({super.key});
 
   @override
-  State<Reports> createState() => _ReportsState();
+  State<Alerts> createState() => _AlertsState();
 }
 
-class _ReportsState extends State<Reports> {
-  late List collections = [];
+class _AlertsState extends State<Alerts> {
+  late List collections;
   bool isLoading = true;
 
   @override
@@ -21,16 +21,9 @@ class _ReportsState extends State<Reports> {
     fetchCollections();
   }
 
-
   Future<void> fetchCollections() async {
     try {
-      final currentUser = pb.authStore.model;
-      final String currentUserId = currentUser?.id  ?? "";
-      if (currentUserId.isEmpty) {
-        throw Exception("User is not authenticated or ID is unavailable.");
-      }
-      final records = await pb.collection("reports").getFullList(
-        filter: "user = '$currentUserId'",
+      final records = await pb.collection("alerts").getFullList(
         sort: '-created',
       );
       setState(() {
@@ -109,7 +102,7 @@ class _ReportsState extends State<Reports> {
                       ),
                       // Text content
                       Text(
-                        collection.getStringValue('report_name'),
+                        collection.getStringValue('alert_title'),
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
@@ -123,7 +116,7 @@ class _ReportsState extends State<Reports> {
                   subtitle: ListBody(
                     children: [
                       Text(
-                        "Description: ${collection.getStringValue('user_description')}",
+                        "Description: ${collection.getStringValue('alert_description')}",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
@@ -131,23 +124,7 @@ class _ReportsState extends State<Reports> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        "Location: ${collection.getStringValue('location')}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Times New Roman',
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        "Contact Information: ${collection.getStringValue('contact')}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Times New Roman',
-                        ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        "Submitted at: ${collection.getStringValue('datetime')}",
+                        "Date/Time: ${collection.getStringValue('date_time')}",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Times New Roman',
