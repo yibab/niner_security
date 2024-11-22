@@ -26,8 +26,6 @@ class Home extends StatelessWidget {
             children: [
               const SizedBox(height: 7.5),
               const NinerText(),
-              const SizedBox(height: 15),
-              const Navbar(),
               SizedBox(height: 30),
               SizedBox(
                 height: 90,
@@ -157,6 +155,7 @@ class Home extends StatelessWidget {
                 height: 50,
               ),
               const Spacer(),
+              const Navbar(),
               const Copyright(),
             ],
           ),

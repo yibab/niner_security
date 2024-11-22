@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:niner_security/screens/alerts.dart';
 import 'package:niner_security/screens/login.dart';
+import 'package:niner_security/screens/lost_and_found.dart';
 import 'package:niner_security/screens/reports.dart';
 import '../db/address.dart';
 class Navbar extends StatefulWidget {
@@ -18,7 +19,7 @@ class _NavbarState extends State<Navbar> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const Alerts(),
+          builder: (context) => const Reports(),
         ),
       );
     }
@@ -26,11 +27,19 @@ class _NavbarState extends State<Navbar> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const Reports(),
+          builder: (context) => const LostReports(),
         ),
       );
     }
-    else if (index == 3) {
+    else if (index == 3){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Alerts(),
+        ),
+      );
+    }
+    else if (index == 4) {
       signOut(context);
     } else {
       setState(() {
@@ -53,13 +62,18 @@ class _NavbarState extends State<Navbar> {
           label: 'Home',
         ),
         BottomNavigationBarItem(
+          icon: Icon(Icons.report_sharp),
+          label: 'My Reports',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.question_mark_outlined),
+          label: 'Lost & Found',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.crisis_alert),
           label: 'Niner Alerts',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.help),
-          label: 'My Reports',
-        ),
+
         BottomNavigationBarItem(
           icon: Icon(Icons.logout),
           label: 'Logout',
