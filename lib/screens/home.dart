@@ -24,9 +24,9 @@ class Home extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 7.5),
+              const SizedBox(height: 25),
               const NinerText(),
-              SizedBox(height: 30),
+              const SizedBox(height: 50),
               SizedBox(
                 height: 90,
                 width: 350,
@@ -144,7 +144,7 @@ class Home extends StatelessWidget {
                       side: const BorderSide(color: Color(0xFF000000), width: 2)
                   ),
                   onPressed: () {
-                        () => urlLaunch('tel:704237-7075');
+                        ;
                   },
                   icon: const Icon(Icons.local_police_outlined),
                   label: const Text(

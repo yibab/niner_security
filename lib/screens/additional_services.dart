@@ -1,136 +1,121 @@
 import 'package:flutter/material.dart';
-import 'package:niner_security/widgets/custom_text_field.dart';
-import 'package:niner_security/widgets/show_alert.dart';
-import 'package:niner_security/widgets/signin_button.dart';
-import 'package:niner_security/screens/home.dart';
-import 'package:niner_security/screens/signup.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../db/address.dart';
-import '../widgets/copyright.dart';
 import '../widgets/niner_text.dart';
+import '../widgets/copyright.dart';
 
 class AdditionalServices extends StatelessWidget {
-  AdditionalServices({super.key});
+  const AdditionalServices({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xFFCCFFDD),
       appBar: AppBar(
-        flexibleSpace: Stack(
-          children: [
-            Container(
-              color: const Color(0xFF00703C),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF00703C),
+                Color(0xFF005F2C),
+              ],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
             ),
-            Opacity(opacity: .3,
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.black.withOpacity(0.9),
-                      Colors.transparent,
-                    ],
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
         title: const NinerText(),
-        iconTheme: const IconThemeData(
-            color: Colors.white
-        ),
+        centerTitle: true,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height:20),
-            Text(
-              "Additional Emergency Services",
-              style: GoogleFonts.bebasNeue(
-                textStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 35,
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 40),
+                    _additonalServicesWidget(
+                      title: "Non-Emergency Contact",
+                      contact: "704-687-8300",
+                    ),
+                    const SizedBox(height: 30),
+                    _additonalServicesWidget(
+                      title: "Emergency Management",
+                      contact: "704-687-7884",
+                    ),
+                    const SizedBox(height: 30),
+                    _additonalServicesWidget(
+                      title: "Environmental Health & Safety",
+                      contact: "704-687-1111",
+                    ),
+                    const SizedBox(height: 30),
+                    _additonalServicesWidget(
+                      title: "Facilities Management Line",
+                      contact: "704-687-0562",
+                    ),
+                  ],
                 ),
               ),
             ),
-
-            const SizedBox(height: 70),
-            const Text(
-              "Non-Emergency Contact",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "704-687-8300",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold
-              ),
-            ),
-
-
-            const SizedBox(height: 85),
-            const Text(
-              "Emergency Management",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "704-687-7884",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-            const SizedBox(height: 85),
-            const Text(
-              "Environmental Health & Safety",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              "704-687-1111",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-            const SizedBox(height: 85),
-            const Text(
-              "Facilities Management Line",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30
-              ),
-            ),
-            const SizedBox(height: 20),
-            const Text(
-                "704-687-0562",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-              ),
-            ),
-            const Spacer(),
-            const Copyright(),
-          ],
-        ),
+          ),
+          const Copyright(),
+        ],
       ),
-
     );
   }
+
+  //To format each of the additional services the same way
+  Widget _additonalServicesWidget({required String title, required String contact}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 6,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: GoogleFonts.bebasNeue(
+              fontSize: 26,
+              color: Color(0xFF00703C),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                contact,
+                style: const TextStyle(
+                  fontFamily: 'Times New Roman',
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                },
+                icon: const Icon(Icons.call, color: Color(0xFF00703C)),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
 }
