@@ -109,7 +109,20 @@ class AdditionalServices extends StatelessWidget {
               IconButton(
                 onPressed: () {
                 },
-                icon: const Icon(Icons.call, color: Color(0xFF00703C)),
+                icon: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:  Colors.white,
+                    border: Border.all(color: Colors.black, width: 1.5)
+                  ),
+                  child: const Icon(
+                      Icons.call,
+                      color: Color(0xFF00703C),
+                      size: 22,
+                  ),
+                ),
               ),
             ],
           ),
