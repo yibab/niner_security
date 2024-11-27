@@ -14,12 +14,11 @@ class SignUp extends StatelessWidget {
 
   //Controllers for Database
   final emailController = TextEditingController();
-
   final passwordController = TextEditingController();
-
   final passwordConfirmController = TextEditingController();
-
   final nameController = TextEditingController();
+
+  final ValueNotifier<String?> errorNotifier = ValueNotifier<String?>(null);
 
   @override
   Widget build(BuildContext context) {
@@ -124,41 +123,15 @@ class SignUp extends StatelessWidget {
 
 
                   if (email.isEmpty || password.isEmpty || name.isEmpty) {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const ShowAlert(
-                            message:
-                            "Email, Password, and Name cannot be empty");
-                      },
-                    );
+                    errorNotifier.value = "Email, Password, or Name Cannot Be Empty";
                   } else if (password != passwordConfirm) {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const ShowAlert(
-                            message: "Passwords do not match!");
-                      },
-                    );
+                    errorNotifier.value = "Passwords Do Not Match";
                   } else if (!email.endsWith('@uncc.edu') &&
                       !email.endsWith('@charlotte.edu')) {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const ShowAlert(
-                            message: "Please enter your school email address!");
-                      },
-                    );
+                    errorNotifier.value = "Please Enter Your School Email Address";
                   } else {
                     if (password.length < 8 || password.length > 72) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ShowAlert(
-                              message:
-                              "Password must be between 8 and 72 characters");
-                        },
-                      );
+                      errorNotifier.value = "Password Must Be Between 8 and 72 Characters Long";
                       return;
                     }
 
@@ -179,29 +152,33 @@ class SignUp extends StatelessWidget {
 
                     try {
                       await pb.collection('users').create(body: body);
-
-                      showDialog(
-                        // Alert for successful signup
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ShowAlert(
-                              message: "Sign Up successful!");
-                        },
-                      );
-
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => Login()),
                       );
                     } catch (e) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ShowAlert(message: "Sign Up failed");
-                        },
-                      );
+                      errorNotifier.value = "Sign Up Failed!";
                     }
                   }
+                },
+              ),
+
+              const SizedBox(height: 10,),
+              ValueListenableBuilder<String?>(
+                valueListenable: errorNotifier,
+                builder: (context, errorMessage,child) {
+                  if(errorMessage == null)
+                    return const SizedBox.shrink();
+                  return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: Text(
+                          errorMessage,
+                          style: const TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold
+                          )
+                      )
+                  );
                 },
               ),
 
